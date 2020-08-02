@@ -4,11 +4,12 @@ var site2 = "https://static.weeaxe.cn/";
 
 async function handleRequest(request) {
 	var pattern = new RegExp("^" + site2); 
+	var pattern2 = new RegExp("^" + site2 + "(?:sw.js|index.html)"); 
 	var url = request.url; 
 	var proxified = false; 
 	if(pattern.test(url)) {
 		proxified = true; 
-		if(/\/sw.js$/.test(url)) 
+		if(pattern2.test(url)) 
 			proxified = false; 
 	}
 	if(proxified === true) 
