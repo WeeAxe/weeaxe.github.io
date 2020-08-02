@@ -3,8 +3,8 @@ var site  = "https://hyac.carrd.co/";
 var site2 = "https://static.weeaxe.cn/"; 
 var version = "1.4"; 
 
+site2 = site2.replace(".", "\\."); 
 async function handleRequest(request) {
-	site2 = site2.replace(".", "\\."); 
 	var pattern = new RegExp("^" + site2); 
 	var pattern2 = new RegExp("^" + site2 + "(?:sw\.js|index\.html)$"); 
 	var url = request.url; 
