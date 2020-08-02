@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-document.onload = function() {
+window.onload = function() {
 	if(/^http:/.test(window.location)) 
 		window.location = window.location.replace(/^http/, "https"); 
 	if ('serviceWorker' in navigator) {
