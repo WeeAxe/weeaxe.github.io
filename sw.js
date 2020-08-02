@@ -6,7 +6,7 @@ var version = "1.5";
 site2 = site2.replace(".", "\\."); 
 async function handleRequest(request) {
 	var pattern = new RegExp("^" + site2); 
-	var pattern2 = new RegExp("^" + site2 + "(?:sw\.js|index\.html)$"); 
+	var pattern2 = new RegExp("^" + site2 + "(?:sw\.js|index\.html|raw/.*)$"); 
 	var url = request.url; 
 	var proxified = false; 
 	if(pattern.test(url)) {
