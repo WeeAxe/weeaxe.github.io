@@ -33,8 +33,23 @@ function rewriteHTML(html) {
 	// Embed version 
 	html = html.replace(/##VERSION##/g, "v" + version); 
 	// Embed HTML 
-	
+	html = embed(html); 
 	return html; 
+}
+
+function embed(str) {
+	function escape2Html(str) {
+		var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+		return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+	}
+	while(true) {
+		var result = /<span>##HTML##<\/span>(.*?)(?=<\/p>)/.exec(str); 
+		if(!result) break; 
+		var raw = result[1].replace(/<[^<>]+?>/g, ""); 
+		raw = escape2Html(raw); 
+		str = str.replace(/<span>##HTML##<\/span>(?:.*?)(?=<\/p>)/, raw); 
+	}
+	return str; 
 }
 
 this.addEventListener("fetch", function(event) {
