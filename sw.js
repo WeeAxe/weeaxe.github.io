@@ -5,12 +5,12 @@ var version = "1.6";
 
 site2 = site2.replace(".", "\\."); 
 async function handleRequest(request) {
-	var pattern = new RegExp("^" + site2 + "(assets.*)?$"); 
+	var pattern = new RegExp("^" + site2 + "((?:assets.*)?)$"); 
 	var url = request.url; 
 	var proxified = pattern.test(url); 
 	console.log(url, "proxified?", proxified); 
 	if(proxified === true) 
-		url = request.url.replace(pattern, proxy + site); 
+		url = request.url.replace(pattern, proxy + site + "$1"); 
 	var resp = await fetch(url, {redirect: "manual"}); 
 	if(!proxified || !/^text/.test(resp.headers.get("Content-Type"))) return resp; 
 	console.log("Applied rewriting."); 
