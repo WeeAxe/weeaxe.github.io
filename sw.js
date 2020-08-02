@@ -3,7 +3,7 @@ var site  = "https://hyac.carrd.co/";
 var site2 = "https://static.weeaxe.cn"; 
 
 async function handleRequest(request) {
-	var pattern = new Regexp("^" + site2); 
+	var pattern = new RegExp("^" + site2); 
 	var url = request.url; 
 	var proxified = false; 
 	if(pattern.test(url)) {
