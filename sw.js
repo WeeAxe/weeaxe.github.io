@@ -1,6 +1,6 @@
 var proxy = "https://cors-anywhere.herokuapp.com/"; 
 var site  = "https://hyac.carrd.co/"; 
-var site2 = "https://static.weeaxe.cn"; 
+var site2 = "https://static.weeaxe.cn/"; 
 
 async function handleRequest(request) {
 	var pattern = new RegExp("^" + site2); 
