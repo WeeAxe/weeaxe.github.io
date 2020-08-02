@@ -8,8 +8,11 @@ async function handleRequest(request) {
 	var proxified = false; 
 	if(pattern.test(url)) {
 		proxified = true; 
-		url = request.url.replace(pattern, proxy + site); 
+		if(/\/sw.js$/.test(url)) 
+			proxified = false; 
 	}
+	if(proxified === true) 
+		url = request.url.replace(pattern, proxy + site); 
 	console.log(url, "proxified?", proxified); 
 	var resp = await fetch(url, {redirect: "manual"}); 
 	if(!proxified || !/^text/.test(resp.headers.get("Content-Type"))) return resp; 
