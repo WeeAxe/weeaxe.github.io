@@ -42,12 +42,13 @@ function embed(str) {
 		var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
 		return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
 	}
+    str = str.replace(/<p([^<>]+?><span>##HTML##<\/span>)/g, "<div$1"); 
 	while(true) {
 		var result = /<span>##HTML##<\/span>(.*?)(?=<\/p>)/.exec(str); 
 		if(!result) break; 
 		var raw = result[1].replace(/<[^<>]+?>/g, ""); 
 		raw = escape2Html(raw); 
-		str = str.replace(/<span>##HTML##<\/span>(?:.*?)(?=<\/p>)/, raw); 
+		str = str.replace(/<span>##HTML##<\/span>(?:.*?)<\/p>/, raw + "</div>"); 
 	}
 	return str; 
 }
