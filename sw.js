@@ -1,7 +1,7 @@
 async function handleRequest(request) {
 	var proxy = "https://cors-anywhere.herokuapp.com/"; 
 	var base = "https://hyac.carrd.co/"
-	var pattern = /^https:\/\/.*?\//; 
+	var pattern = /^https:\/\/static.weeaxe.cn\//; 
 	var url = request.url; 
 	var proxified = false; 
 	if(pattern.test(url)) {
