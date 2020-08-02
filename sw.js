@@ -1,19 +1,13 @@
 var proxy = "https://cors-anywhere.herokuapp.com/"; 
 var site  = "https://hyac.carrd.co/"; 
 var site2 = "https://static.weeaxe.cn/"; 
-var version = "1.5"; 
+var version = "1.6"; 
 
 site2 = site2.replace(".", "\\."); 
 async function handleRequest(request) {
-	var pattern = new RegExp("^" + site2); 
-	var pattern2 = new RegExp("^" + site2 + "(?:sw\.js|index\.html|raw/.*)$"); 
+	var pattern = new RegExp("^" + site2 + "assets"); 
 	var url = request.url; 
-	var proxified = false; 
-	if(pattern.test(url)) {
-		proxified = true; 
-		if(pattern2.test(url)) 
-			proxified = false; 
-	}
+	var proxified = pattern.test(url); 
 	console.log(url, "proxified?", proxified); 
 	if(proxified === true) 
 		url = request.url.replace(pattern, proxy + site); 
