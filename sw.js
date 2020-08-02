@@ -1,7 +1,7 @@
 var proxy = "https://cors-anywhere.herokuapp.com/"; 
 var site  = "https://hyac.carrd.co/"; 
 var site2 = "https://static.weeaxe.cn/"; 
-var version = "1.4"; 
+var version = "1.5"; 
 
 site2 = site2.replace(".", "\\."); 
 async function handleRequest(request) {
